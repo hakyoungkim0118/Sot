@@ -2,10 +2,10 @@ package com.bit.sort;
 
 import java.util.Arrays;
 /**
- *  ÄüÁ¤·ÄÀÌ¶õ povot°ªÀ» Áß½ÉÀ¸·Î 
- *  °ªÀÌ ÀÛÀ¸¸é start °ªÀÌ Å©¸é end·Î ÁöÁ¤ÇÏ°í 
- *  µÎ°³ ¸ðµÎ ¼±ÅÃ‰ç´Ù¸é ÀÚ¸® ±³È¯À» ÇØÁØ´Ù.
- *  ¸¸¾à statrt¿Í end¿¡ °ªÀÌ ¾ø´Ù¸é pivot¿¡ ÀÖ´Â °ªÀ» ±³È¯ÇØÁÖ´Â Çü½ÄÀÌ´Ù
+ *  í€µì •ë ¬ì´ëž€ povotê°’ì„ ì¤‘ì‹¬ìœ¼ë¡œ 
+ *  ê°’ì´ ìž‘ìœ¼ë©´ start ê°’ì´ í¬ë©´ endë¡œ ì§€ì •í•˜ê³  
+ *  ë‘ê°œ ëª¨ë‘ ì„ íƒë¬ë‹¤ë©´ ìžë¦¬ êµí™˜ì„ í•´ì¤€ë‹¤.
+ *  ë§Œì•½ statrtì™€ endì— ê°’ì´ ì—†ë‹¤ë©´ pivotì— ìžˆëŠ” ê°’ì„ êµí™˜í•´ì£¼ëŠ” í˜•ì‹ì´ë‹¤
  * @author bitcamp
  *
  */
