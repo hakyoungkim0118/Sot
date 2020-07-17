@@ -95,9 +95,20 @@ select 'Oracle', LPAD('Oracle', 10, '#') AS LPAD_1, RPAD('Oracle', 10, '*') AS R
 select RPAD('971225-', 14, '*') as RPAD_JMNO, RPAD('010-1234-', 13, '*') as RPAD_PHONE from dual;
 select concat(empno, ename), concat(empno, concat(' : ',ename)) from emp where ename = 'SCOTT';
 select '[' || TRIM(' _ _Oracle_ _ ') | | ']' as TRIM, '[' || TRIM(LEADING FROM ' _ _Oracle_ _ ') || ']' as TRIM_LEADING, '[' || TRIM(TRAILING FROM ' _ _Oracle_ _ ') || ']' as TRIM_TRAILING, '[' || TRIM(BOTH FROM ' _ _Oracle_ _ ') || ']' as TRIM_BOTH from dual;
+
+
 // 2줄 스킵(143,144pg)
 
+select '[' || TRIM(' _Oracle_ ') | | ']' as TRIM, '[' || LTRIM(' _Oracle_ ') || ']' as LTRIM, '[' || LTRIM( '<_Oracle_> ','_<') || ']' as LTRIM_2, '[' || RTRIM(' _Oracle_ ') || ']' as RTRIM, '[' || RTRIM('<_Oracle_>', '>_') || ']' as RTRIM_2 from dual;
+
+select round(1234.5678) as ROUND, round(1234.5678,0) as ROUND_0, round(1234.5678,1) as ROUND_1, round(1234.5678,2)as ROUND_2, round(1234.5678,-1 as ROUND_MINUS1, round(1234.5678,-2) as ROUND_MINUS2 from dual;
+
+select trunc(1234.5678) as TRUNC, trunc(1234.5678,0) as TRUNC_0,trunc(1234.5678,1) as TRUNC_1, trunc(1234.5678,2) as TRUNC_2, trunc(1234.5678,-1) as TRUNC_MINUS1, trunc(1234.5678,-2) as TRUNC_MINUS2 from dual;
+
+select ceil(3.14), floor(3.14), ceil(-3.14), floor(-3.14) from dual;
+select mod(15,6), mod (10,2), mod(11,2) from dual;
 
 
+// start from 150pg
 
 ~pg175
