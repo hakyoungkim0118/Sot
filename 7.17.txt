@@ -107,8 +107,12 @@ select trunc(1234.5678) as TRUNC, trunc(1234.5678,0) as TRUNC_0,trunc(1234.5678,
 
 select ceil(3.14), floor(3.14), ceil(-3.14), floor(-3.14) from dual;
 select mod(15,6), mod (10,2), mod(11,2) from dual;
+select sysdate as NOW, sysdate-1 as YESTERDAY, sysdate+1 as TOMORROW from dual;
+select sysdate, add_months(sysdate,3) from dual;
+select empno, ename, hiredate, add_months(hiredate, 120) as WORK10YEAR from emp;
+select empno, ename, hiredate, sysdate from emp where add_months(hiredate, 384) > sysdate;
+select empno, ename, hiredate, sysdate, months_between(hiredate,sysdate) as months1, months_between(sysdate, hiredate) as months2, trunc(months_between(sysdate,hiredate)) as months3 from emp;
 
-
-// start from 150pg
+// start from 153pg
 
 ~pg175
