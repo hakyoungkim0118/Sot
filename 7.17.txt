@@ -163,6 +163,5 @@ end as COMM_NEXT
 from emp;
 
 
-// start from 164pg
 
 ~pg175
