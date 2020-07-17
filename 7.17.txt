@@ -113,6 +113,28 @@ select empno, ename, hiredate, add_months(hiredate, 120) as WORK10YEAR from emp;
 select empno, ename, hiredate, sysdate from emp where add_months(hiredate, 384) > sysdate;
 select empno, ename, hiredate, sysdate, months_between(hiredate,sysdate) as months1, months_between(sysdate, hiredate) as months2, trunc(months_between(sysdate,hiredate)) as months3 from emp;
 
-// start from 153pg
+select sysdate, next_day(sysdate, '월요일'), last_day(sysdate) from dual;
+
+select sysdate, round(sysdate, 'CC') as FORMAT_CC, round(sysdate, 'YYYY') as FORMAT_YYYY, round(sysdate, 'Q') as FORMAT_Q, round(sysdate, 'DDD') as FORMAT_DDD, round(sysdate, 'HH') as FORMAT_HH from dual;
+
+select sysdate, trunc(sysdate, 'CC') as FORMAT_CC, trunc(sysdate, 'YYYY') as FORMAT_YYYY, trunc(sysdate, 'Q') as FORMAT_Q, trunc(sysdate, 'DDD') as FORMAT_DDD, trunc(sysdate, 'HH') as FORMAT_HH from dual;
+
+select to_char (sysdate, 'YYYY/MM/DD HH24:MI:SS') as 현재날짜시간 from dual;
+
+select sysdate, to_char(sysdate, 'MM') as MM, to_char(sysdate, 'MON') as MON, to_char(sysdate, 'MONTH') as MONTH, to_char(sysdate, 'DD') as DD, to_char(sysdate, 'DY') as DY, to_char(sysdate, 'DAY') as DAY from dual;
+
+select sysdate, to_char(sysdate, 'MM') as MM, to_char(sysdate, 'MON', 'NLS_DATE_LANGUAGE = KOREAN') as MON_KOR, to_char(sysdate, 'MON', 'NLS_DATE_LANGUAGE = JAPANESE') as MON_JPN, to_char(sysdate, 'MON', 'NLS_DATE_LANGUAGE = ENGLISH') as MON_ENG, to_char(sysdate, 'MONTH', 'NLS_DATE_LANGUAGE = KOREAN') as MONTH_KOR, to_char(sysdate, 'MONTH', 'NLS_DATE_LANGUAGE = JAPANESE') as MONTH_JPN, to_char(sysdate, 'MONTH', 'NLS_DATE_LANGUAGE = ENGLISH') as MONTH_ENG from dual;
+
+select sysdate, to_char(sysdate, 'MM') as MM,  to_char(sysdate, 'DD') as DD, to_char(sysdate, 'DY', 'NLS_DATE_LANGUAGE = KOREAN') as DY_KOR, to_char(sysdate, 'DY', 'NLS_DATE_LANGUAGE = JAPANESE') as DY_JPN, to_char(sysdate, 'DY', 'NLS_DATE_LANGUAGE = ENGLISH') as DY_ENG, to_char(sysdate, 'DAY', 'NLS_DATE_LANGUAGE = KOREAN') as DAY_KOR, to_char(sysdate, 'DAY', 'NLS_DATE_LANGUAGE = JAPANESE') as DAY_JPN, to_char(sysdate, 'DAY', 'NLS_DATE_LANGUAGE = ENGLISH') as DAY_ENG from dual;
+
+select sysdate, to_char(sysdate, 'HH24:MI:SS') as HH24MISS, to_char(sysdate, 'HH12:MI:SS AM') as HHMISS_AM, to_char(sysdate, 'HH:MI:SS P.M.') as HHMISS_PM from dual;
+
+select sal, to_char(sal, '$999,999') as SAL_$, to_char(sal, 'L999,999') as SAL_L, to_char(sal, '999,999.00') as SAL_1, to_char(sal, '000,999,999') as SAL_2, to_char(sal, '000999999.99') as SAL_3, to_char(sal, '999,999,00') as SAL_4 from emp;
+
+select 1300-'1500', '1300' + 1500 from dual;
+select '1,300' - '1,500' from dual;
+
+
+// start from 164pg
 
 ~pg175
