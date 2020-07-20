@@ -1,0 +1,21 @@
+doctype html
+html
+head
+title
+style
+meta
+link
+base
+body
+h1~h6
+p
+br
+a href
+img
+<!-- -->
+ul li ol dl dt dd
+div span
+iframe
+script
+input type "text","submit","password"
+select , option

@@ -1,0 +1,47 @@
+string var = "";
+int var = 10;
+
+var name = {
+firstname:"kim",
+lastname:"na young"
+};
+person.firstname
+
+alert ("");
+
+function
+onclick
+onmouse
+
+String 함수
+length
+indexof
+slice
+replace
+touppercase
+tolowercase
+
+array = ["","",""];
+array[0]
+
+Array 함수
+pop
+push
+splice
+sort
+
+date함수
+getfullyear
+getmonth
+setfullyear
+
+Math함수
+random
+max
+round
+sqrt
+
+if,switch,for,while
+java랑 똑같음
+
+documnet
