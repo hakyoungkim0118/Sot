@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+		<!--
+		파일 인코딩 : 유니코드
+		viewport : 화면에서 보이는 영역
+		content : 크기 설정
+		device-width : 장치 너비
+		initial-scale = 1.0 뷰포트의 초기 배율(1.0은 100%)
+		웹페이지 버전에 맞게 출력(ie = edge : ie 버전 중 가장 최신 모드로 표시)
+		-->
+    
+        <style>
+    
+            p,label {
+            display: none;
+            
+        }
+            
+        </style>
+    </head>
+    
+    <body>
+        <form>
+            
+            아이디 
+            <input type="email" id="id" placeholder="아이디" required ><br>
+            <p>아이디를 먼저 입력해주세요.</p>
+
+            비밀번호
+            <input type="password" placeholder="비밀번호" id='pwd'><br>
+            <p>비밀번호를 먼저 입력해주세요.</p>
+
+            비밀번호확인
+            <input type="password" placeholder="비밀번호 확인" id="pwdMatch"><br>
+            <p>비밀번호 확인을 먼저 입력해주세요.</p>
+            <label id="pwdCheck">비밀번호를 일치시켜주세요.</label>
+
+            주민등록번호
+            <input type="text" id="residentialNum1">
+            -
+            <input type="text" id="residentialNum2"><br>
+            <p>주민등록번호 앞자리를 먼저 입력해주세요.</p>
+
+            <input type="submit" value="가입"><br>
+        </form>
+            <a onclick="this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" 
+            href="javascript:void(0)">자기소개서</a><textarea style="DISPLAY: none" cols="40" rows="20"></textarea>
+			<!--
+			onclick : 마우스 클릭시
+			nextSibling : 동일 레벨에서 현재 노드의 다음 노드의 값을 읽기 전용으로 반환(주의 nextSibling 이후 공백과 줄바꿈이 있어선 안됨)
+			style.display : none이면 안보이게 block이면 보이게 함
+			-->
+
+            <script>
+                var form;
+                var inputTag;
+                var pTag;
+                var pwdCheck;
+
+                // 1
+                window.onload = function () {
+                    form = document.querySelector("form");		
+                    inputTag = form.elements;
+                    pTag = document.querySelectorAll("p");
+                    pwdCheck = document.getElementById("pwdCheck")
+                    
+                    for (i = 0; i < inputTag.length; i++) {
+                        inputTag[i].addEventListener('click',Check,false);
+                        inputTag[i].addEventListener('click',function(e){validate(e);},false);
+                    }
+                }
+				//document.querySelector : 문서에서 첫번째 <form> 요소를 가져옴
+				//form elements : object HTMLFormControlsCollection < length = 6
+				//label, input, select, textarea, button, fieldset, legend, datalist, output, option, optgroup
+				//document.querySelectorAll : 다큐먼트에서 모든 <p> 엘리먼트의 nodelist를 가져옴
+				//document.getElementById : 주어진 문자열과 일치하는 id 속성을 가진 요소를 찾고 element객체를 반환 (주의 id 값은 유일해야함)
+				//addEventListener : 이벤트 핸들러를 등록하는데 사용
+				//첫번쨰 인자 : 이벤트 타입, 함수, optional(true,false)
+				//optional true : capturing 방식으로 이벤트 전달
+				//optional fales : bubling 방식으로 이벤트가 전달(defualt값)
+				
+                // 2
+                function pwd() {
+                    if(inputTag[2].value!==""&&inputTag[1].value!==inputTag[2].value){ 
+                        pTag[2].style.display="none";
+                        pwdCheck.style.display="block";
+                    }
+                    else pwdCheck.style.display="none"; 
+                }
+				//inputTag 1 : 비밀번호 2 : 비밀번호확인
+				//pTag 1 : 비밀번호를 먼저 입력해주세요
+				//pTag 2 : 비밀번호 확인을 먼저 입력해주세요
+				//pwdCheck : 비밀번호를 일치시켜주세요
+				
+                // 3
+                function Check() {
+                    var num;    //선택된 inputTag 번호
+					
+                    // 4
+                    for (var i = 0; i < inputTag.length; i++) {
+                        if (this === inputTag[i]) {
+                            num = i;
+                            break;
+                        }
+                    }
+
+                    // 5
+                    for (var i = 0; i <num; i++) {
+                        if (inputTag[i].value === "") {
+                            showMsg(i);
+                            break;
+                        } 
+                        hideMsg();
+                    }
+                    
+                }
+				// In a method, this refers to the owner object.
+				// Alone, this refers to the global object.
+				// In a function, this refers to the global object.
+				// In a function, in strict mode, this is undefined.
+				// In an event, this refers to the element that received the event.
+				// Methods like call(), and apply() can refer this to any object.
+    
+                function hideMsg() {
+                    for (var j = 0; j < pTag.length; j++) {
+                        pTag[j].style.display = "none";
+                        }
+                }
+				// 입력이 되면 메시지 안보이게
+
+                function showMsg(i) {
+                    hideMsg();
+
+                    // switch(i){
+                //     case 0: pTag[0].style.display = "block";
+                //     break;
+                //     case 1: pTag[1].style.display = "block";
+                //     break;
+                //     case 2: pTag[2].style.display = "block";
+                //     break;
+                //     case 3: pTag[3].style.display = "block";
+                //     break;
+                // }
+
+                    pTag[i].style.display="block";
+                    inputTag[i].focus();
+    
+                }
+				// 입력 하라는 메시지
+				// focus : 요소에 중점을 두게함 blur : 해제
+
+                function validate(e) {
+                    var expression;
+                    var select = e.target;
+
+                    switch(select.id){
+                        case "id": expression = "//^([a-z][a-z0-9_-]{8,20})*@([naver|gmail|hanmail|yahoo])*\.([com|net|co.kr]{3,5})$//g";
+                        case "pwd": expression = "//^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{10,16}$//g";
+                        case "residentialNum1": expression = "//^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))//g";
+                        case "residentialNum2": expression = "//[1-4][0-9]{6}$//g";
+                    }
+
+                    if(expression.test("aa")) alert ("a");
+                    else alert("nono");
+                }
+				// 정규표현식
+				// id : 아이디
+				// pwd : 비밀번호
+				// residentialNum1 : 주민번호 앞자리
+				// residentialNum2 : 주민번호 뒷자리
+				// 플래그를 이용한 고급 검색 : g 전역 검색, i 대소문자 구분 없는 겁색, m 다중행 검색, s .에 개행 문자도 매칭, u 유니코드; 패턴을 유니코드 코트 포인트의 나열로 취급, y sticky 검색을 수행
+				// https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/%EC%A0%95%EA%B7%9C%EC%8B%9D 참조 : 정규표현식
+
+                
+            </script>
+    
+    
+        
+    
+    </body>
+    
+    </html>
